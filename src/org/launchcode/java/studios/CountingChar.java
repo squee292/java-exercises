@@ -16,14 +16,25 @@ public class CountingChar {
 
 
         for (int i = 0; i < charactersInString.length; i++) {
-            if (charactersInString[i].isString)
-            if (stringCount.containsKey(charactersInString[i])) {
-                stringCount.put(charactersInString[i], (stringCount.get(charactersInString[i]) + 1));
-            } else {
-                stringCount.put(charactersInString[i], 1);
+            if (Character.isAlphabetic(charactersInString[i])){
+                if (stringCount.containsKey(charactersInString[i])) {
+                    stringCount.put(charactersInString[i], (stringCount.get(charactersInString[i]) + 1));
+                } else {
+                    stringCount.put(charactersInString[i], 1);
+                }
+            }else if(Character.isSpaceChar(charactersInString[i])){
+                char blank = ' ';
+                if (stringCount.containsKey(blank)) {
+                        stringCount.put(blank, (stringCount.get(charactersInString[i]) + 1));
+                    } else {
+                        stringCount.put(blank, 1);
+                    }
+                }
             }
-        }
+
+
         for(Map.Entry<Character, Integer> countChar : stringCount.entrySet()){
+
             System.out.println(countChar.getKey() + ": " + countChar.getValue());
         }
     }
